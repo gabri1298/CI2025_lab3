@@ -34,7 +34,7 @@ The notebook is organized into several sections, each responsible for a key comp
 
 ## Results
 
-The results obtained in the notebook demonstrate the effectiveness and efficiency of using NetworkX for large-scale shortest path problems:
+The results obtained in the notebook demonstrate the effectiveness and efficiency of using Dijkstra and Bellman-Ford for large-scale shortest path problems:
 
 - The algorithms achieved **consistent performance** across all problem instances, even for graphs with 1000 nodes.
 - **Algorithm selection** proved crucial for correctness:
