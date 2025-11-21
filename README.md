@@ -45,14 +45,12 @@ The results obtained in the notebook demonstrate the effectiveness and efficienc
   - **Negative weights with high noise** frequently created negative cycles, making paths unbounded.
   - **Sparse graphs** had many unreachable pairs, especially at larger sizes.
 
-### Why NetworkX Instead of A* or Custom Implementations?
-
-The choice to use NetworkX was deliberate and based on fundamental algorithmic and practical considerations:
+### Why use Dijkstra and Bellman-Ford Instead of A* or Custom Implementations?
 
 **1. The All-Pairs Problem Structure**
-- The task requires computing shortest paths for **all n × (n-1) pairs** of nodes
-- A 1000-node graph needs **999,000 individual path computations**
-- A* is a **single-source, single-destination** algorithm—running it for all pairs would require 999,000 separate executions
+- The task requires computing shortest paths for **all n × (n-1) / 2 pairs** of nodes
+- A 1000-node graph needs **499,500 individual path computations**
+- A* is a **single-source, single-destination** algorithm—running it for all pairs would require 499,500 separate executions
 
 **2. Specialized All-Pairs Algorithms Are Orders of Magnitude Faster**
 - NetworkX uses algorithms specifically designed for all-pairs scenarios:
@@ -61,7 +59,7 @@ The choice to use NetworkX was deliberate and based on fundamental algorithmic a
 - These algorithms **share computation** across queries, avoiding redundant work
 - Running A* n² times would be **computationally prohibitive** even with optimal implementations
 
-**3. A* Requires Good Heuristics**
+**3. A\* Requires Good Heuristics**
 - A* needs **admissible heuristics** that never overestimate true cost
 - For **general weighted graphs**, no universal heuristic exists that improves performance
 - Without good heuristics, A* essentially degrades to Dijkstra anyway
